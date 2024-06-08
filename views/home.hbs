@@ -1,0 +1,25 @@
+<div class="container-fluid">
+<nav class="navbar bg-body-tertiary mb-5">
+  <div class="container-fluid">
+    <a class="navbar-brand">Hii {{name}}</a>
+    <form class="d-flex" >
+<a class="btn btn-primary" href="/logout" role="button">Logout</a>   
+ </form>
+  </div>
+</nav>
+
+
+
+<div class=" d-flex flex-wrap justify-content-between ">
+{{#each data}}
+<div class="card mb-5 me-2" style="width: 12rem;">
+  <img src="{{this.image}}" class="card-img-top" alt="">
+  <div class="card-body">
+    <p class="card-text">{{this.title}}</p>
+    <p class="card-text">{{this.price}}</p>
+  </div>
+</div>
+{{/each}}
+</div>
+
+</div>

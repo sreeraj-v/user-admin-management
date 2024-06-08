@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/stylesheet/style2.css">
+  <title>Manage Users</title>
+</head>
+<style>
+  .form-div {
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 3rem 0rem;
+  }
+
+  form {
+    padding: 2rem;
+    border: 1px solid gray;
+    border-radius: 10px;
+  }
+</style>
+
+<body>
+  <!-- Edit Modal HTML -->
+  <div class="form-div">
+    <form class="col-4" action="/admin/editUser/{{data._id}}" method="post">
+      <div class="modal-header">
+        <h4 class="modal-title">Edit Employee</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group">
+          <label>Name</label>
+          <input type="text" name="username" class="form-control" value="{{data.username}}">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" value="{{data.email}}">
+        </div>
+        {{!-- <div class="form-group">
+          <label>Gender</label>
+          <input type="text" name="gender" class="form-control" value="{{data.gender}}">
+        </div> --}}
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select name="gender" id="gender"  class="form-control">
+            <option > {{data.gender}}</option>
+            <option value="male"> Male</option>
+            <option value="female">Female</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Phone</label>
+          <input type="text" name="phone" class="form-control" value="{{data.phone}}">
+        </div>
+      </div>
+      <div class="modal-footer">
+        <a href="/admin">
+        <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+        </a>
+        <input type="submit" class="btn btn-info" value="Save">
+      </div>
+    </form>
+  </div>
+
+  <script src="/scripts/script2.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<style>
+    body {
+        color: #566787;
+        background: #f5f5f5;
+        font-family: 'Varela Round', sans-serif;
+        font-size: 13px;
+    }
+
+    .form-wrapper {
+        background: #fff;
+        padding: 20px 25px;
+        margin: 30px auto;
+        border-radius: 3px;
+        box-shadow: 0 1px 1px rgba(0, 0, 0, .05);
+        max-width: 400px;
+        margin-top: 20vh;
+    }
+
+    .form-wrapper h2 {
+        margin-bottom: 20px;
+    }
+
+    .input-group {
+        margin-bottom: 15px;
+        position: relative;
+    }
+
+    .input-group input {
+        height: 45px;
+        padding: 5px 10px 0 10px;
+        border: 1px solid #ddd;
+        border-radius: 3px;
+        width: 100%;
+    }
+
+    .input-group label {
+        position: absolute;
+        top: 50%;
+        left: 10px;
+        transform: translateY(-50%);
+        font-size: 14px;
+        color: #999;
+        transition: all 0.3s ease;
+        pointer-events: none;
+    }
+
+    .input-group input:focus+label,
+    .input-group input:valid+label {
+        top: 5px;
+        font-size: 12px;
+        color: #555;
+    }
+
+    .remember {
+        margin-bottom: 15px;
+    }
+
+    .remember label {
+        font-size: 14px;
+        color: #555;
+    }
+
+    .remember input[type="checkbox"] {
+        margin-right: 5px;
+    }
+
+    button[type="submit"] {
+        background-color: #435d7d;
+        color: #fff;
+        border: none;
+        border-radius: 3px;
+        padding: 10px 20px;
+        font-size: 16px;
+        cursor: pointer;
+        width: 100%;
+    }
+
+    .signUp-link {
+        text-align: center;
+        margin-top: 15px;
+        font-size: 14px;
+        color: #555;
+    }
+
+    .signUp-link a {
+        color: #435d7d;
+        text-decoration: none;
+    }
+</style>
+
+<div class="container">
+    <div class="form-wrapper sign-in">
+        <form action="/login" method="post">
+            <h2>Sign In</h2>
+            {{#if errorMessage}}
+            <div class="alert alert-danger h-2" role="alert">
+                {{errorMessage}}
+            </div>
+            {{/if}}
+            <div class="input-group">
+                <input type="text" required name="email" class="form-control">
+                <label>Email</label>
+            </div>
+            <div class="input-group">
+                <input type="password" required name="password" class="form-control">
+                <label>Password</label>
+            </div>
+            <div class="remember">
+                <label><input type="checkbox"> Remember me</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-block">Login</button>
+            <div class="signUp-link">
+                <p>Don't have an account? <a href="/register" class="signUpBtn-link">Sign Up</a></p>
+            </div>
+        </form>
+    </div>
+</div>

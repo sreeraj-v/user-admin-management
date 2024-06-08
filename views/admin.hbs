@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto|Varela+Round">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="/stylesheet/style2.css">
+  <title>Manage Users</title>
+</head>
+
+<body>
+  <div class="container">
+    <div class="table-wrapper">
+      <div class="table-title">
+        <div class="row">
+          <div class="col-sm-6">
+            <h2>Manage Users</h2>
+          </div>
+          <div class="col-sm-6 buttons-container">
+
+            <form action="/admin/search" method="post">
+              <div class="input-group search-bar">
+                <input type="text" class="form-control" name="keyword" placeholder="Search users..." id="searchInput">
+                <span class="input-group-btn">
+                  <button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-search"></i></button>
+                </span>
+              </div>
+            </form>
+
+            <a href="#addEmployeeModal" class="btn btn-success  pl-3 pr-4" data-toggle="modal"><span>Add
+                Users</span></a>
+            <a class="btn btn-danger  pl-4 pr-4" href="/logout" role="button">Logout</a>
+          </div>
+        </div>
+      </div>
+      <!-- Rest of the HTML code remains the same -->
+      <table class="table table-striped table-hover">
+        <thead>
+          <tr>
+            <th>
+              <span class="custom-checkbox">
+                <input type="checkbox" id="selectAll">
+                <label for="selectAll"></label>
+              </span>
+            </th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Gender</th>
+            <th>Phone</th>
+            <th>Actions</th>
+          </tr>
+        </thead>
+        <tbody>
+          {{#each users}}
+          <tr>
+            <td>
+              <span class="custom-checkbox">
+                <input type="checkbox" id="checkbox1" name="options[]" value="1">
+                <label for="checkbox1"></label>
+              </span>
+            </td>
+            <td>{{this.username}}</td>
+            <td>{{this.email}}</td>
+            <td>{{this.gender}}</td>
+            <td>{{this.phone}}</td>
+            <td style="display: flex; gap:4px">
+
+              <a href="/admin/editUser/{{this._id}}" class="edit" data-toggle="modal">
+                <i class="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i>
+              </a>
+
+              <a href="/admin/deleteUser/{{this._id}}">
+                <button type="button" style="border: none; background:none" class="delete"
+                  onclick="return confirm('Do you want to delete? {{this.username}}')">
+                  <i class="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i>
+                </button>
+              </a>
+            </td>
+          </tr>
+          {{/each}}
+          <!-- i removed Delete Modal HTML -->
+          {{!-- here i deleted remaining table raw data --}}
+        </tbody>
+      </table>
+      <div class="clearfix">
+        <div class="hint-text">Showing <b>5</b> out of <b>25</b> entries</div>
+        <ul class="pagination">
+          <li class="page-item disabled"><a href="#">Previous</a></li>
+          <li class="page-item active"><a href="#" class="page-link">1</a></li>
+          <li class="page-item"><a href="#" class="page-link">2</a></li>
+          <li class="page-item "><a href="#" class="page-link">3</a></li>
+          <li class="page-item"><a href="#" class="page-link">4</a></li>
+          <li class="page-item"><a href="#" class="page-link">5</a></li>
+          <li class="page-item"><a href="#" class="page-link">Next</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <!-- add Modal HTML -->
+  <div id="addEmployeeModal" class="modal fade">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <form action="/admin/addUser" method="post">
+          <div class="modal-header">
+            <h4 class="modal-title">Add Employee</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+          </div>
+          <div class="modal-body">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" class="form-control" name="username">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+              <label>Gender</label>
+              <input type="text" class="form-control" name="gender"></input>
+            </div>
+            <div class="form-group">
+              <label>Phone</label>
+              <input type="text" class="form-control" name="phone">
+            </div>
+            <div class="form-group">
+              <label>Password</label>
+              <input type="text" class="form-control" name="password">
+            </div>
+          </div>
+          <div class="modal-footer">
+            <input type="button" class="btn btn-default" data-dismiss="modal" value="Cancel">
+            <input type="submit" class="btn btn-success" value="Add">
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <script src="/scripts/script2.js"></script>
+
+</body>
+
+</html>
+
+
+{{!-- doubts --}}
+{{!-- deletil --- this._id --}}
+
+{{!-- deleted items --}}
+{{!-- <a href="#editEmployeeModal" class="edit" data-toggle="modal"><i class="material-icons" data-toggle="tooltip"
+    title="Edit">&#xE254;</i></a> --}}
